@@ -1,0 +1,32 @@
+<div class='panel panel-primary'>
+  <div class='panel-heading'>
+      {{pageTitle}}
+  </div>
+  <div class='panel-body'>
+      <div class='table-responsive'>
+          <table class='table text-left'*ngIf='employees && employees.length'>
+              <thead>
+                  <tr>                   
+                      <th>Name</th>
+                      <th>Date of Birth</th>
+                      <th>Gender</th>
+                      <th>Department</th>
+                  </tr>
+              </thead>
+              <tbody>
+         <tr *ngFor='let  employee of employees'>
+             
+             <td>{{employee.firstName}}&nbsp;{{employee.lastName}}</td>
+             <td>{{employee.dob}}</td>
+             <td>{{employee.gender}}</td>
+             <td>{{employee.department}}</td>
+
+          </tr>
+              </tbody>
+          </table>
+      </div>
+  </div>
+</div>
+<div *ngIf='errorMessage' class='alert alert-danger'>
+  Error: {{ errorMessage }}
+</div>

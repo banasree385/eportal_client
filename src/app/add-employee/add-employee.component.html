@@ -1,0 +1,102 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    {{pageTitle}}
+  </div>
+  <div class="panel-body">
+      <form class="form-horizontal" novalidate  [formGroup]="employeeForm">
+      <fieldset>
+         <div class="form-group" [ngClass]="{'has-error': (employeeForm.get('firstName').touched ||
+                                                           employeeForm.get('firstName').dirty) &&
+                                                         !employeeForm.get('firstName').valid }" >
+          <label class="col-md-2 control-label" for="firstNameId">First Name</label>
+          <div class="col-md-8">
+              <input class="form-control"   id="firstNameId"  type="text"  placeholder="First Name (required)" 
+                formControlName="firstName"/>
+            <span class="help-block" *ngIf="(employeeForm.get('firstName').touched ||
+                                                  employeeForm.get('firstName').dirty)&&
+                                                  employeeForm.get('firstName').errors" >
+                <span  *ngIf="employeeForm.get('firstName').errors.required" >Please enter your first name</span>
+                <span *ngIf="employeeForm.get('firstName').errors.minlength">The first name must be longer than 2 characters.</span>
+            </span>
+          </div>
+      </div>
+      
+      <div class="form-group" [ngClass]="{'has-error': (employeeForm.get('lastName').touched ||
+                                                     employeeForm.get('lastName').dirty) &&
+                                                    !employeeForm.get('lastName').valid }" >
+          <label class="col-md-2 control-label" for="lastNameId">Last Name</label>
+          <div class="col-md-8">
+              <input class="form-control"   id="lastNameId"  type="text"  placeholder="Last Name (required)" 
+                formControlName="lastName"/>
+                <span class="help-block" *ngIf="(employeeForm.get('lastName').touched ||
+                                                  employeeForm.get('lastName').dirty)&&
+                                                  employeeForm.get('lastName').errors" >
+                <span  *ngIf="employeeForm.get('lastName').errors.required" >Please enter your last name</span>
+            </span>
+          </div>
+      </div>
+      <div class="form-group" >
+          <label class="col-md-2 control-label" for="genderId">Gender</label>
+          <div class="col-md-4">
+             <!--  <input class="form-control"   id="genderId"  type="text"  placeholder="Gender (required)" 
+                formControlName="gender"/> -->
+                <label class="radio-inline">
+                    <input type="radio" name="gender" value="M" formControlName="gender" checked>Male
+                  </label>
+                  <label class="radio-inline">
+                    <input type="radio" name="gender" value="F" formControlName="gender" >Female
+                  </label>
+          </div>
+      </div>
+      <div class="form-group"  >
+          <label class="col-md-2 control-label" for="dobId">Date of Birth</label>
+          <div class="col-md-8">
+                <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                formControlName="dobObj"></my-date-picker>
+         <span class="help-block" *ngIf="(employeeForm.get('dobObj').touched ||
+                employeeForm.get('dobObj').dirty)&&
+                employeeForm.get('dobObj').errors" >
+         <span  *ngIf="employeeForm.get('lastName').errors.required" >Please enter Date of Birth</span>
+        </span>
+          </div>
+      </div>
+      <div class="form-group" [ngClass]="{'has-error': (employeeForm.get('department').touched ||
+                                                        employeeForm.get('department').dirty) &&
+                                                        !employeeForm.get('department').valid }">
+          <label class="col-md-2 control-label" for="departmentId">Department</label>
+          <div class="col-md-8">
+              <input class="form-control"   id="departmentId"  type="text"  placeholder="Department (required)" 
+                formControlName="department"/>
+                <span class="help-block" *ngIf="(employeeForm.get('department').touched ||
+                employeeForm.get('department').dirty)&&
+                employeeForm.get('department').errors" >
+                <span  *ngIf="employeeForm.get('department').errors.required" >Please enter department</span>
+                </span>
+          </div>
+      </div>
+
+      <div class="form-group">
+          <div class="col-md-4 col-md-offset-2">
+              <span>
+                <button class="btn btn-primary"type="submit"
+                      style="width:80px;margin-right:10px"[disabled]='!employeeForm.valid'
+                      (click)="saveEmployee()">
+                      Save
+                     
+                </button>
+              </span>
+              <span>
+                  <a class="btn btn-default"
+                     style="width:80px"
+                     [routerLink]="['/employee']">
+                      Cancel
+                  </a>
+              </span>
+            </div>
+          </div>
+     
+      
+      </fieldset>
+      </form>
+  </div>
+  </div>
