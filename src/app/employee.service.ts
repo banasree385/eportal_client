@@ -8,7 +8,7 @@ import { IEmployee } from './Employee';
 @Injectable()
 export class EmployeeService {
   //private _employeeUrl='http://localhost:8080/eportal/v1/employees';
-  private _baseUrl='/'
+  private _baseUrl='/api/'
   private _employeeUrl=this._baseUrl+'employees';
   constructor(private _http:HttpClient) { }
   getEmpolyees():Observable<IEmployee[]>{
