@@ -40,7 +40,8 @@ private handleError(error:HttpErrorResponse): Observable<any> {
   console.log("error"+JSON.stringify(error));
   console.log("error"+error["body"]["error"]);
 
-return Observable.throw(error.error.json|| 'Server error');
+//return Observable.throw(error.error.json|| 'Server error');
+return Observable.throw(error);
 }
 
 }

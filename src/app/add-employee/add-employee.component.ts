@@ -54,7 +54,7 @@ export class AddEmployeeComponent implements OnInit {
       this.onSaveComplete();
     }
   }
-
+       
   onSaveComplete():void{
     this.employeeForm.reset();
     this.router.navigate(['/employees']);
